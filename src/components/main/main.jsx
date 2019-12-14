@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PlaceCard from '../place-card/place-card.jsx';
+import OffersList from '../offers-list/offers-list.jsx';
 
 const Main = (props) => {
-  const {cards, onCardClick} = props;
+  const {offerCards} = props;
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -98,17 +98,9 @@ const Main = (props) => {
                 */}
 
               </form>
-              <div className="cities__places-list places__list tabs__content">
-                {cards.map((card) => <PlaceCard
-                  key = {card.id}
-                  isPremium = {card.isPremium}
-                  previewImage = {card.previewImage}
-                  price = {card.price}
-                  type = {card.type}
-                  title = {card.title}
-                  onCardClickHandler = {onCardClick}
-                />)}
-              </div>
+              <OffersList
+                offerCards = {offerCards}
+              />
             </section>
             <div className="cities__right-section">
               <section className="cities__map map"></section>
@@ -121,7 +113,7 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
-  cards: PropTypes.arrayOf(PropTypes.shape({
+  offerCards: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number,
     isPremium: PropTypes.bool,
     previewImage: PropTypes.string,

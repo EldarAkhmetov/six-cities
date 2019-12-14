@@ -1,13 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const PlaceCard = (props) => {
-  const {isPremium, previewImage, price, type, title, onCardClickHandler} = props;
+const OfferCard = (props) => {
+  const {id, isPremium, previewImage, price, type, title, onCardHover, isFavorite} = props;
 
   const buttonClasses = [`place-card__bookmark-button`, `button`];
 
+  if (isFavorite) {
+    buttonClasses.push(`place-card__bookmark-button--active`);
+  }
+
   return (
-    <article className="cities__place-card place-card" onClick = {onCardClickHandler}>
+    <article
+      className="cities__place-card place-card"
+      onMouseEnter = {() => {
+        onCardHover(id);
+      }}
+    >
       <div className="place-card__mark">
         <span>{isPremium ? `Premium` : ``}</span>
       </div>
@@ -44,13 +53,15 @@ const PlaceCard = (props) => {
   );
 };
 
-PlaceCard.propTypes = {
+OfferCard.propTypes = {
+  id: PropTypes.number.isRequired,
+  isFavorite: PropTypes.bool.isRequired,
   isPremium: PropTypes.bool.isRequired,
   price: PropTypes.number.isRequired,
   type: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   previewImage: PropTypes.string.isRequired,
-  onCardClickHandler: PropTypes.func,
+  onCardHover: PropTypes.func,
 };
 
-export default PlaceCard;
+export default OfferCard;
