@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import leaflet from 'leaflet';
 import OffersList from '../offers-list/offers-list.jsx';
+import Map from '../map/map.jsx';
 
 const Main = (props) => {
   const {offerCards} = props;
@@ -103,7 +105,10 @@ const Main = (props) => {
               />
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <Map
+                offerCards={offerCards}
+                leaflet={leaflet}
+              />
             </div>
           </div>
         </div>
@@ -119,7 +124,8 @@ Main.propTypes = {
     previewImage: PropTypes.string,
     price: PropTypes.number,
     type: PropTypes.string,
-    title: PropTypes.title
+    title: PropTypes.title,
+    coordinates: PropTypes.arrayOf(PropTypes.number).isRequired,
   })),
   onCardClick: PropTypes.func,
 };

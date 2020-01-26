@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`OfferList correctly renders after launch 1`] = `
+exports[`App correctly renders after launch 1`] = `
 <div
   className="page page--gray page--main"
 >
@@ -201,6 +201,7 @@ exports[`OfferList correctly renders after launch 1`] = `
         >
           <section
             className="cities__map map"
+            id="map"
           />
         </div>
       </div>

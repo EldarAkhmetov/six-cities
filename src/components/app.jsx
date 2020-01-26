@@ -22,6 +22,7 @@ App.propTypes = {
     price: PropTypes.number,
     type: PropTypes.string,
     title: PropTypes.title,
+    coordinates: PropTypes.arrayOf(PropTypes.number),
   })),
 };
 

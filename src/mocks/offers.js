@@ -19,7 +19,8 @@ export const offerCards = [
       name: `Angelina`,
       avatarUrl: `../img/avatar-angelina.jpg`,
     },
-    description: `A quiet cozy and picturesque that hides behind a river by the unique lightness of Amsterdam.`
+    description: `A quiet cozy and picturesque that hides behind a river by the unique lightness of Amsterdam.`,
+    coordinates: [52.3909553943508, 4.85309666406198],
   },
   {
     id: 2,
@@ -41,7 +42,8 @@ export const offerCards = [
       name: `Angelina2`,
       avatarUrl: `../img/avatar-angelina.jpg`,
     },
-    description: `A quiet cozy and picturesque that hides behind a river by the unique lightness of Amsterdam.`
+    description: `A quiet cozy and picturesque that hides behind a river by the unique lightness of Amsterdam.`,
+    coordinates: [52.3959553943508, 4.90309666406198],
   },
   {
     id: 3,
@@ -63,7 +65,8 @@ export const offerCards = [
       name: `Angelina3`,
       avatarUrl: `../img/avatar-angelina.jpg`,
     },
-    description: `A quiet cozy and picturesque that hides behind a river by the unique lightness of Amsterdam.`
+    description: `A quiet cozy and picturesque that hides behind a river by the unique lightness of Amsterdam.`,
+    coordinates: [52.4109553943508, 4.86350666406198],
   },
   {
     id: 4,
@@ -85,6 +88,7 @@ export const offerCards = [
       name: `Angelina4`,
       avatarUrl: `../img/avatar-angelina.jpg`,
     },
-    description: `A quiet cozy and picturesque that hides behind a river by the unique lightness of Amsterdam.`
+    description: `A quiet cozy and picturesque that hides behind a river by the unique lightness of Amsterdam.`,
+    coordinates: [52.3709553943508, 4.84309666406198],
   },
 ];
