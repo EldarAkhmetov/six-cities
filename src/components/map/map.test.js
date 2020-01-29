@@ -1,32 +1,17 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
-import Map from './map.jsx';
+import Enzyme, {mount} from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import {Map} from './map.jsx';
+
+Enzyme.configure({adapter: new Adapter()});
 
 it(`Map correctly renders`, () => {
   const props = {
     offerCards: [],
-    leaflet: {
-      map() {
-        return {
-          setView: jest.fn(),
-        };
-      },
-      icon: jest.fn(),
-      tileLayer() {
-        return {
-          addTo: jest.fn(),
-        };
-      },
-      marker() {
-        return {
-          addTo: jest.fn(),
-        };
-      },
-    },
+    currentCity: `Amsterdam`
   };
 
-  const tree = renderer
-    .create(<Map {...props}/>).toJSON();
+  const tree = mount(<Map {...props} />);
 
   expect(tree).toMatchSnapshot();
 

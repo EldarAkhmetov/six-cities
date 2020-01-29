@@ -1,11 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import leaflet from 'leaflet';
+
 import OffersList from '../offers-list/offers-list.jsx';
 import Map from '../map/map.jsx';
+import LocationsList from '../locations-list/locations-list.jsx';
 
-const Main = (props) => {
-  const {offerCards} = props;
+import {locations} from '../../reducer/reducer.js';
+
+const Main = () => {
+
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -33,42 +35,7 @@ const Main = (props) => {
 
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
-        <div className="tabs">
-          <section className="locations container">
-            <ul className="locations__list tabs__list">
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Paris</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Cologne</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Brussels</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item tabs__item--active">
-                  <span>Amsterdam</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Hamburg</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Dusseldorf</span>
-                </a>
-              </li>
-            </ul>
-          </section>
-        </div>
+        <LocationsList locations={Object.keys(locations)} />
         <div className="cities">
           <div className="cities__places-container container">
             <section className="cities__places places">
@@ -100,15 +67,10 @@ const Main = (props) => {
                 */}
 
               </form>
-              <OffersList
-                offerCards = {offerCards}
-              />
+              <OffersList />
             </section>
             <div className="cities__right-section">
-              <Map
-                offerCards={offerCards}
-                leaflet={leaflet}
-              />
+              <Map />
             </div>
           </div>
         </div>
@@ -117,17 +79,5 @@ const Main = (props) => {
   );
 };
 
-Main.propTypes = {
-  offerCards: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number,
-    isPremium: PropTypes.bool,
-    previewImage: PropTypes.string,
-    price: PropTypes.number,
-    type: PropTypes.string,
-    title: PropTypes.title,
-    coordinates: PropTypes.arrayOf(PropTypes.number).isRequired,
-  })),
-  onCardClick: PropTypes.func,
-};
 
 export default Main;

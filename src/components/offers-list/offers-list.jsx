@@ -1,8 +1,12 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import OfferCard from '../offer-card/offer-card.jsx';
 import PropTypes from 'prop-types';
 
-export default class OffersList extends React.PureComponent {
+import offersMock from '../../mocks/offers.js';
+import {getOffersByCity} from '../../utils/utils.js';
+
+class OffersList extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -48,3 +52,11 @@ OffersList.propTypes = {
     title: PropTypes.title,
   })),
 };
+
+const mapStateToProps = (state) => {
+  return {offerCards: getOffersByCity(offersMock, state.currentCity)};
+};
+
+export {OffersList};
+
+export default connect(mapStateToProps)(OffersList);

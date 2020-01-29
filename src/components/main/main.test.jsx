@@ -1,12 +1,9 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import Enzyme, {shallow} from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 import Main from './main';
-import leaflet from 'leaflet';
 
-leaflet.map = () => ({setView: jest.fn()});
-leaflet.tileLayer = () => ({addTo: jest.fn()});
-leaflet.marker = () => ({addTo: jest.fn()});
-leaflet.icon = jest.fn();
+Enzyme.configure({adapter: new Adapter()});
 
 it(`Main correctly renders after relaunch`, () => {
   const props = {
@@ -35,12 +32,10 @@ it(`Main correctly renders after relaunch`, () => {
         coordinates: [52.3909553943508, 4.85309666406198],
       },
     ],
-    leaflet,
+
   };
 
-  const tree = renderer
-    .create(<Main {...props}/>)
-    .toJSON();
+  const tree = shallow(<Main {...props}/>);
 
   expect(tree).toMatchSnapshot();
 });
