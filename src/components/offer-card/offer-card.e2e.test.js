@@ -3,25 +3,35 @@ import Adapter from 'enzyme-adapter-react-16';
 import React from 'react';
 import OfferCard from './offer-card';
 
+const cardId = `${Math.floor(Math.random() * Math.floor(10))}`;
+
+const mock = {
+  id: cardId,
+  key: 0,
+  isPremium: false,
+  isFavorite: false,
+  previewImage: ``,
+  price: 0,
+  type: ``,
+  title: ``
+};
+
+const itemClickHandler = jest.fn();
+
 Enzyme.configure({adapter: new Adapter()});
 
 it(`PlaceCard is correctly handle click`, () => {
-  const onCardHoverHandler = jest.fn();
-  const cardId = Math.floor(Math.random() * Math.floor(10));
   const offerCard = shallow(<OfferCard
-    id = {cardId}
-    key = {0}
-    isPremium = {false}
-    isFavorite = {false}
-    previewImage = {``}
-    price = {0}
-    type = {``}
-    title = {``}
-    onCardHover = {onCardHoverHandler}
+    card={mock}
+    itemClickHandler={itemClickHandler}
   />);
 
   const card = offerCard.find(`.place-card`);
-  card.simulate(`mouseEnter`);
+  const cardImg = card.find(`.place-card__image-wrapper img`);
 
-  expect(onCardHoverHandler).toHaveBeenCalledWith(cardId);
+  cardImg.simulate(`click`, {
+    preventDefault: () => {}
+  });
+
+  expect(itemClickHandler).toHaveBeenCalledWith(cardId);
 });

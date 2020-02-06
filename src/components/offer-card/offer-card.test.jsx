@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import OfferCard from './offer-card';
 
 it(`OfferCard correctly renders after relaunch`, () => {
-  const props = {
+  const mock = {
     id: 0,
     isPremium: false,
     previewImage: ``,
@@ -14,7 +14,7 @@ it(`OfferCard correctly renders after relaunch`, () => {
   };
 
   const tree = renderer
-    .create(<OfferCard {...props}/>)
+    .create(<OfferCard card={mock} />)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

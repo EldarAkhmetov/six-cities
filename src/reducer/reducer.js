@@ -1,5 +1,8 @@
+import offers from '../mocks/offers.js';
+
 const initialState = {
-  currentCity: `Amsterdam`
+  currentCity: `Amsterdam`,
+  offers: [...offers]
 };
 
 const locations = {
@@ -24,7 +27,8 @@ const locations = {
 };
 
 const actionTypes = {
-  CHANGE_CURRENT_CITY: `CHANGE_CURRENT_CITY`
+  CHANGE_CURRENT_CITY: `CHANGE_CURRENT_CITY`,
+  GET_OFFERS: `GET_OFFERS`
 };
 
 const actionCreators = {
@@ -33,13 +37,29 @@ const actionCreators = {
       type: actionTypes.CHANGE_CURRENT_CITY,
       city
     };
+  },
+
+  getOffers() {
+    return {
+      type: actionTypes.GET_OFFERS,
+      offers
+    };
   }
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.CHANGE_CURRENT_CITY:
-      return {currentCity: action.city};
+      return {
+        ...state,
+        currentCity: action.city
+      };
+
+    case actionTypes.GET_OFFERS:
+      return {
+        ...state,
+        offers: action.offers
+      };
 
     default:
       return state;

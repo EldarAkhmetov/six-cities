@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import leaflet from 'leaflet';
 import PropTypes from 'prop-types';
 
-import offersMock from '../../mocks/offers.js';
 import {getOffersByCity} from '../../utils/utils.js';
 import {locations} from '../../reducer/reducer.js';
 
@@ -88,7 +87,7 @@ Map.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    offerCards: getOffersByCity(offersMock, state.currentCity),
+    offerCards: getOffersByCity(state.offers, state.currentCity),
     currentCity: state.currentCity
   };
 };

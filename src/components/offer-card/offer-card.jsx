@@ -2,27 +2,37 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const OfferCard = (props) => {
-  const {id, isPremium, previewImage, price, type, title, onCardHover, isFavorite} = props;
+  const {card, activeItemId, itemClickHandler} = props;
+  const {id, isPremium, previewImage, price, type, title, isFavorite} = card;
 
   const buttonClasses = [`place-card__bookmark-button`, `button`];
 
   if (isFavorite) {
     buttonClasses.push(`place-card__bookmark-button--active`);
   }
-
   return (
     <article
-      className="cities__place-card place-card"
-      onMouseEnter = {() => {
-        onCardHover(id);
-      }}
+      className={`cities__place-card place-card${
+        activeItemId === id ? ` active` : ``
+      }`}
     >
-      <div className="place-card__mark">
-        <span>{isPremium ? `Premium` : ``}</span>
-      </div>
+      {isPremium && (
+        <div className="place-card__mark">
+          <span>Premium</span>
+        </div>
+      )}
       <div className="cities__image-wrapper place-card__image-wrapper">
         <a href="#">
-          <img className="place-card__image" src={previewImage} width="260" height="200" alt="Place image"/>
+          <img className="place-card__image"
+            src={previewImage}
+            width="260"
+            height="200"
+            alt="Place image"
+            onClick={(evt) => {
+              evt.preventDefault();
+              itemClickHandler(id);
+            }}
+          />
         </a>
       </div>
       <div className="place-card__info">
@@ -54,14 +64,17 @@ const OfferCard = (props) => {
 };
 
 OfferCard.propTypes = {
-  id: PropTypes.number.isRequired,
-  isFavorite: PropTypes.bool.isRequired,
-  isPremium: PropTypes.bool.isRequired,
-  price: PropTypes.number.isRequired,
-  type: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  previewImage: PropTypes.string.isRequired,
-  onCardHover: PropTypes.func,
+  activeItemId: PropTypes.string,
+  card: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    isFavorite: PropTypes.bool.isRequired,
+    isPremium: PropTypes.bool.isRequired,
+    price: PropTypes.number.isRequired,
+    type: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    previewImage: PropTypes.string.isRequired,
+  }).isRequired,
+  itemClickHandler: PropTypes.func,
 };
 
 export default OfferCard;

@@ -1,6 +1,6 @@
 export default [
   {
-    id: 1,
+    id: `1`,
     previewImage: `img/apartment-01.jpg`,
     images: [`../img/room.jpg`, `../img/apartment-01.jpg`, `../img/apartment-02.jpg`, `../img/apartment-03.jpg`,
       `../img/studio-01.jpg`, `../img/apartment-01.jpg`],
@@ -24,7 +24,7 @@ export default [
     city: `Amsterdam`,
   },
   {
-    id: 2,
+    id: `2`,
     previewImage: `img/apartment-02.jpg`,
     images: [`../img/room.jpg`, `../img/apartment-01.jpg`, `../img/apartment-02.jpg`, `../img/apartment-03.jpg`,
       `../img/studio-01.jpg`, `../img/apartment-01.jpg`],
@@ -48,7 +48,7 @@ export default [
     city: `Amsterdam`,
   },
   {
-    id: 3,
+    id: `3`,
     previewImage: `img/apartment-03.jpg`,
     images: [`../img/room.jpg`, `../img/apartment-01.jpg`, `../img/apartment-02.jpg`, `../img/apartment-03.jpg`,
       `../img/studio-01.jpg`, `../img/apartment-01.jpg`],
@@ -72,7 +72,7 @@ export default [
     city: `Amsterdam`,
   },
   {
-    id: 4,
+    id: `4`,
     previewImage: `img/apartment-01.jpg`,
     images: [`../img/room.jpg`, `../img/apartment-01.jpg`, `../img/apartment-02.jpg`, `../img/apartment-03.jpg`,
       `../img/studio-01.jpg`, `../img/apartment-01.jpg`],
@@ -96,7 +96,7 @@ export default [
     city: `Amsterdam`,
   },
   {
-    id: 5,
+    id: `5`,
     previewImage: `img/apartment-01.jpg`,
     images: [`../img/room.jpg`, `../img/apartment-01.jpg`, `../img/apartment-02.jpg`, `../img/apartment-03.jpg`,
       `../img/studio-01.jpg`, `../img/apartment-01.jpg`],
@@ -120,7 +120,7 @@ export default [
     city: `Tbilisi`,
   },
   {
-    id: 6,
+    id: `6`,
     previewImage: `img/apartment-01.jpg`,
     images: [`../img/room.jpg`, `../img/apartment-01.jpg`, `../img/apartment-02.jpg`, `../img/apartment-03.jpg`,
       `../img/studio-01.jpg`, `../img/apartment-01.jpg`],
@@ -144,7 +144,7 @@ export default [
     city: `Saint Petersburg`,
   },
   {
-    id: 7,
+    id: `7`,
     previewImage: `img/apartment-01.jpg`,
     images: [`../img/room.jpg`, `../img/apartment-01.jpg`, `../img/apartment-02.jpg`, `../img/apartment-03.jpg`,
       `../img/studio-01.jpg`, `../img/apartment-01.jpg`],
@@ -168,7 +168,7 @@ export default [
     city: `Beijing`,
   },
   {
-    id: 8,
+    id: `8`,
     previewImage: `img/apartment-01.jpg`,
     images: [`../img/room.jpg`, `../img/apartment-01.jpg`, `../img/apartment-02.jpg`, `../img/apartment-03.jpg`,
       `../img/studio-01.jpg`, `../img/apartment-01.jpg`],
@@ -192,7 +192,7 @@ export default [
     city: `Buenos Aires`,
   },
   {
-    id: 9,
+    id: `9`,
     previewImage: `img/apartment-01.jpg`,
     images: [`../img/room.jpg`, `../img/apartment-01.jpg`, `../img/apartment-02.jpg`, `../img/apartment-03.jpg`,
       `../img/studio-01.jpg`, `../img/apartment-01.jpg`],

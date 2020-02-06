@@ -1,9 +1,11 @@
 import reducer from './reducer';
 import {actionCreators} from './reducer';
+import offers from '../mocks/offers.js';
 
 it(`Reducer should return initial state by default`, () => {
   expect(reducer(undefined, {})).toEqual({
-    currentCity: `Amsterdam`
+    currentCity: `Amsterdam`,
+    offers
   });
 });
 

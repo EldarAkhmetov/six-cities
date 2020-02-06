@@ -3,47 +3,28 @@ import {connect} from 'react-redux';
 import OfferCard from '../offer-card/offer-card.jsx';
 import PropTypes from 'prop-types';
 
-import offersMock from '../../mocks/offers.js';
 import {getOffersByCity} from '../../utils/utils.js';
+import withActiveItem from '../../HOCs/with-active-item.jsx';
 
-class OffersList extends React.PureComponent {
-  constructor(props) {
-    super(props);
 
-    this.state = {
-      activeCardId: null,
-    };
-  }
+const OffersList = (props) => {
+  const {offerCards, activeItemId, changeActiveItemId} = props;
+  return (
+    <div className="cities__places-list places__list tabs__content">
+      {offerCards.map((card) => <OfferCard
+        key={`card-${card.id}`}
+        card={card}
+        activeItemId={activeItemId}
+        itemClickHandler={changeActiveItemId}
+      />)}
+    </div>
+  );
 
-  render() {
-    const {offerCards} = this.props;
-    return (
-      <div className="cities__places-list places__list tabs__content">
-        {offerCards.map((card) => <OfferCard
-          id = {card.id}
-          key = {`card-${card.id}`}
-          isPremium = {card.isPremium}
-          isFavorite = {card.isFavorite}
-          previewImage = {card.previewImage}
-          price = {card.price}
-          type = {card.type}
-          title = {card.title}
-          onCardHover = {this._cardHoverHandler.bind(this)}
-        />)}
-      </div>
-    );
-  }
-
-  _cardHoverHandler(cardId) {
-    this.setState({
-      activeCardId: cardId,
-    });
-  }
-}
+};
 
 OffersList.propTypes = {
   offerCards: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number,
+    id: PropTypes.string,
     isPremium: PropTypes.bool,
     isFavorite: PropTypes.bool.isRequired,
     previewImage: PropTypes.string,
@@ -51,12 +32,14 @@ OffersList.propTypes = {
     type: PropTypes.string,
     title: PropTypes.title,
   })),
+  activeItemId: PropTypes.string,
+  changeActiveItemId: PropTypes.func
 };
 
 const mapStateToProps = (state) => {
-  return {offerCards: getOffersByCity(offersMock, state.currentCity)};
+  return {offerCards: getOffersByCity(state.offers, state.currentCity)};
 };
 
 export {OffersList};
 
-export default connect(mapStateToProps)(OffersList);
+export default connect(mapStateToProps)(withActiveItem(OffersList));
