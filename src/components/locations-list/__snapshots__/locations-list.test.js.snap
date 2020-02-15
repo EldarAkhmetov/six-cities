@@ -22,66 +22,6 @@ exports[`LocationsList correctly renders 1`] = `
           </span>
         </a>
       </li>
-      <li
-        className="locations__item"
-      >
-        <a
-          className="locations__item-link tabs__item"
-          onClick={[Function]}
-        >
-          <span>
-            Tbilisi
-          </span>
-        </a>
-      </li>
-      <li
-        className="locations__item"
-      >
-        <a
-          className="locations__item-link tabs__item"
-          onClick={[Function]}
-        >
-          <span>
-            Saint Petersburg
-          </span>
-        </a>
-      </li>
-      <li
-        className="locations__item"
-      >
-        <a
-          className="locations__item-link tabs__item"
-          onClick={[Function]}
-        >
-          <span>
-            Beijing
-          </span>
-        </a>
-      </li>
-      <li
-        className="locations__item"
-      >
-        <a
-          className="locations__item-link tabs__item"
-          onClick={[Function]}
-        >
-          <span>
-            Buenos Aires
-          </span>
-        </a>
-      </li>
-      <li
-        className="locations__item"
-      >
-        <a
-          className="locations__item-link tabs__item"
-          onClick={[Function]}
-        >
-          <span>
-            Summerside
-          </span>
-        </a>
-      </li>
     </ul>
   </section>
 </div>

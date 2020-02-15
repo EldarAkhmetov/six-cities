@@ -15,7 +15,7 @@ exports[`OfferCard correctly renders after relaunch 1`] = `
         className="place-card__image"
         height="200"
         onClick={[Function]}
-        src=""
+        src="https://place-hold.it/260x200"
         width="260"
       />
     </a>
@@ -70,7 +70,7 @@ exports[`OfferCard correctly renders after relaunch 1`] = `
         <span
           style={
             Object {
-              "width": "93%",
+              "width": "80%",
             }
           }
         />

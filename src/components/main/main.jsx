@@ -4,8 +4,6 @@ import OffersList from '../offers-list/offers-list.jsx';
 import Map from '../map/map.jsx';
 import LocationsList from '../locations-list/locations-list.jsx';
 
-import {locations} from '../../reducer/reducer.js';
-
 const Main = () => {
 
   return (
@@ -35,7 +33,7 @@ const Main = () => {
 
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
-        <LocationsList locations={Object.keys(locations)} />
+        <LocationsList />
         <div className="cities">
           <div className="cities__places-container container">
             <section className="cities__places places">
@@ -49,23 +47,6 @@ const Main = () => {
                     <use xlinkHref="#icon-arrow-select"></use>
                   </svg>
                 </span>
-                {/*
-                <ul className="places__options places__options--custom places__options--opened">
-                  <li className="places__option places__option--active" tabIndex="0">Popular</li>
-                  <li className="places__option" tabIndex="0">Price: low to high</li>
-                  <li className="places__option" tabIndex="0">Price: high to low</li>
-                  <li className="places__option" tabIndex="0">Top rated first</li>
-                </ul>
-                */}
-                {/*
-                <select className="places__sorting-type" id="places-sorting">
-                  <option className="places__option" value="popular">Popular</option>
-                  <option className="places__option" value="to-high">Price: low to high</option>
-                  <option className="places__option" value="to-low">Price: high to low</option>
-                  <option className="places__option" value="top-rated">Top rated first</option>
-                </select>
-                */}
-
               </form>
               <OffersList />
             </section>

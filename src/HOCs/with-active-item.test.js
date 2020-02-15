@@ -6,7 +6,7 @@ import {OffersList} from '../components/offers-list/offers-list.jsx';
 
 const mock = [
   {
-    id: `1`,
+    id: 1,
     previewImage: `img/apartment-01.jpg`,
     images: [`../img/room.jpg`, `../img/apartment-01.jpg`, `../img/apartment-02.jpg`, `../img/apartment-03.jpg`,
       `../img/studio-01.jpg`, `../img/apartment-01.jpg`],
@@ -46,5 +46,5 @@ it(`Should change activeItemId correctly when item img was clicked`, () => {
 
   wrapper.update();
 
-  expect(wrapper.state().activeItemId).toEqual(`1`);
+  expect(wrapper.state().activeItemId).toEqual(1);
 });

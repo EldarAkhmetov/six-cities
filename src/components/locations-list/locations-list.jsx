@@ -2,18 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
-import {locations, actionCreators} from '../../reducer/reducer.js';
+import {actionCreator} from '../../reducer/current-city/current-city';
+import {getLocations, getCurrentCity} from '../../reducer/offers/selectors';
 
 const LocationsList = (props) => {
-  const {currentCity, changeCurrentCity} = props;
+  const {locations, currentCity, changeCurrentCity} = props;
 
   return (
     <div className="cities tabs">
       <section className="locations container">
         <ul className="locations__list tabs__list">
-          {Object.keys(locations).map((it, index) => {
+          {[...locations.keys()].map((it, index) => {
             return (
-              <li className="locations__item" key={index}>
+              <li className="locations__item" key={`location-${index}`}>
                 <a
                   className={`locations__item-link tabs__item${
                     it === currentCity ? ` tabs__item--active` : ``
@@ -34,15 +35,19 @@ const LocationsList = (props) => {
 
 LocationsList.propTypes = {
   currentCity: PropTypes.string,
-  changeCurrentCity: PropTypes.func
+  changeCurrentCity: PropTypes.func,
+  locations: PropTypes.object
 };
 
 const mapStateToProps = (state) => {
-  return {currentCity: state.currentCity};
+  return {
+    currentCity: getCurrentCity(state),
+    locations: getLocations(state)
+  };
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  changeCurrentCity: (city) => dispatch(actionCreators.changeCurrentCity(city))
+  changeCurrentCity: (city) => dispatch(actionCreator.changeCurrentCity(city))
 });
 
 export {LocationsList};

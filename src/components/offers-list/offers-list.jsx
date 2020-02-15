@@ -3,7 +3,8 @@ import {connect} from 'react-redux';
 import OfferCard from '../offer-card/offer-card.jsx';
 import PropTypes from 'prop-types';
 
-import {getOffersByCity} from '../../utils/utils.js';
+import {getCurrentCityOffers} from '../../reducer/offers/selectors';
+
 import withActiveItem from '../../HOCs/with-active-item.jsx';
 
 
@@ -11,33 +12,25 @@ const OffersList = (props) => {
   const {offerCards, activeItemId, changeActiveItemId} = props;
   return (
     <div className="cities__places-list places__list tabs__content">
-      {offerCards.map((card) => <OfferCard
+      {offerCards ? offerCards.map((card) => <OfferCard
         key={`card-${card.id}`}
         card={card}
         activeItemId={activeItemId}
         itemClickHandler={changeActiveItemId}
-      />)}
+      />) : null}
     </div>
   );
 
 };
 
 OffersList.propTypes = {
-  offerCards: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string,
-    isPremium: PropTypes.bool,
-    isFavorite: PropTypes.bool.isRequired,
-    previewImage: PropTypes.string,
-    price: PropTypes.number,
-    type: PropTypes.string,
-    title: PropTypes.title,
-  })),
-  activeItemId: PropTypes.string,
+  offerCards: PropTypes.arrayOf(PropTypes.object),
+  activeItemId: PropTypes.number,
   changeActiveItemId: PropTypes.func
 };
 
 const mapStateToProps = (state) => {
-  return {offerCards: getOffersByCity(state.offers, state.currentCity)};
+  return {offerCards: getCurrentCityOffers(state)};
 };
 
 export {OffersList};

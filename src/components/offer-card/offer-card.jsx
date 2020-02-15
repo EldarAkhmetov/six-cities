@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const OfferCard = (props) => {
   const {card, activeItemId, itemClickHandler} = props;
-  const {id, isPremium, previewImage, price, type, title, isFavorite} = card;
+  const {id, is_premium: isPremium, preview_image: previewImage, price, type, title, isFavorite, rating} = card;
 
   const buttonClasses = [`place-card__bookmark-button`, `button`];
 
@@ -24,7 +24,7 @@ const OfferCard = (props) => {
       <div className="cities__image-wrapper place-card__image-wrapper">
         <a href="#">
           <img className="place-card__image"
-            src={previewImage}
+            src={previewImage || `https://place-hold.it/260x200`}
             width="260"
             height="200"
             alt="Place image"
@@ -50,7 +50,7 @@ const OfferCard = (props) => {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: `93%`}}></span>
+            <span style={{width: `${rating * 20}%`}}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
@@ -64,16 +64,8 @@ const OfferCard = (props) => {
 };
 
 OfferCard.propTypes = {
-  activeItemId: PropTypes.string,
-  card: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    isFavorite: PropTypes.bool.isRequired,
-    isPremium: PropTypes.bool.isRequired,
-    price: PropTypes.number.isRequired,
-    type: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    previewImage: PropTypes.string.isRequired,
-  }).isRequired,
+  activeItemId: PropTypes.number,
+  card: PropTypes.object.isRequired,
   itemClickHandler: PropTypes.func,
 };
 
