@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
-import {actionCreator} from '../../reducer/current-city/current-city';
+import {actionCreators} from '../../reducer/current-city/current-city';
 import {getLocations, getCurrentCity} from '../../reducer/offers/selectors';
 
 const LocationsList = (props) => {
@@ -47,7 +47,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  changeCurrentCity: (city) => dispatch(actionCreator.changeCurrentCity(city))
+  changeCurrentCity: (city) => dispatch(actionCreators.changeCurrentCity(city))
 });
 
 export {LocationsList};

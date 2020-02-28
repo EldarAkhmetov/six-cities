@@ -2,14 +2,14 @@ const initialState = {
   currentCity: `Amsterdam`,
 };
 
-const actionType = {
+const actionTypes = {
   CHANGE_CURRENT_CITY: `CHANGE_CURRENT_CITY`,
 };
 
-const actionCreator = {
+const actionCreators = {
   changeCurrentCity(city) {
     return {
-      type: actionType.CHANGE_CURRENT_CITY,
+      type: actionTypes.CHANGE_CURRENT_CITY,
       city
     };
   },
@@ -17,7 +17,7 @@ const actionCreator = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionType.CHANGE_CURRENT_CITY:
+    case actionTypes.CHANGE_CURRENT_CITY:
       return {
         ...state,
         currentCity: action.city
@@ -29,7 +29,7 @@ const reducer = (state = initialState, action) => {
 };
 
 export {
-  actionType,
-  actionCreator,
+  actionTypes,
+  actionCreators,
   reducer
 };

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import {getCurrentCityOffers} from '../../reducer/offers/selectors';
 
-import withActiveItem from '../../HOCs/with-active-item.jsx';
+import withActiveItem from '../../HOCs/with-active-item/with-active-item.jsx';
 
 
 const OffersList = (props) => {

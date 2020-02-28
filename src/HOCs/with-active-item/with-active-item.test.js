@@ -2,7 +2,7 @@ import React from 'react';
 import {configure, mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import withActiveItem from './with-active-item';
-import {OffersList} from '../components/offers-list/offers-list.jsx';
+import {OffersList} from '../../components/offers-list/offers-list.jsx';
 
 const mock = [
   {

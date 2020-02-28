@@ -10,7 +10,7 @@ import createApi from './api.js';
 import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import reducer from './reducer/reducer.js';
-import {operation} from './reducer/offers/offers';
+import {operations} from './reducer/offers/offers';
 
 import App from './components/app.jsx';
 
@@ -24,7 +24,7 @@ const store = createStore(
     )
 );
 
-store.dispatch(operation.loadOffers());
+store.dispatch(operations.loadOffers());
 
 
 ReactDOM.render(
