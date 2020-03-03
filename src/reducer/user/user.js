@@ -1,6 +1,6 @@
 const initialState = {
   userData: null,
-  isAuthorizationRequired: false
+  isAuthorizationRequired: true
 };
 
 const actionTypes = {

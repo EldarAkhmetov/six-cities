@@ -1,7 +1,8 @@
+import React from 'react';
 import axios from 'axios';
-import {actionCreators} from './reducer/offers/offers';
+import {Redirect} from 'react-router-dom';
 
-const createApi = (dispatch) => {
+const createApi = () => {
   const api = axios.create({
     baseURL: `https://es31-server.appspot.com/six-cities`,
     timeout: 5000,
@@ -11,7 +12,7 @@ const createApi = (dispatch) => {
   const onSuccess = (response) => response;
   const onFail = (err) => {
     if (err.response.status === 403) {
-      dispatch(actionCreators.authorizationRequired(true));
+      return <Redirect to="/login" />;
     }
 
     return err;

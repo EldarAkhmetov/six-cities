@@ -2,66 +2,50 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
-import {
-  getAuthorizationStatus,
-  getCurrentUserData
-} from '../../reducer/user/selectors';
-import {actionCreators} from '../../reducer/user/user';
+import {Link} from 'react-router-dom';
+
+import {getCurrentUserData} from '../../reducer/user/selectors';
 
 const SignInLink = (props) => {
-  const {onClickHandler, userData} = props;
-  let name = `Sign in`;
+  const {userData} = props;
+  let email = `Sign in`;
   let avatarUrl;
   let avatarStyles;
+  let url = `/login`;
 
   if (userData) {
-    name = userData.name;
+    email = userData.email;
     avatarUrl = userData.avatar_url;
     avatarStyles = {
       backgroundImage: `url(${avatarUrl})`,
     };
+    url = `/favorites`;
   }
 
   return (
-    <a
-      className="header__nav-link header__nav-link--profile"
-      onClick={(evt) => {
-        evt.preventDefault();
-        if (!userData) {
-          onClickHandler(true);
-        }
-      }}
-      href="#"
+    <Link
+      className="header__nav-link header__nav-link--profile" to={url}
     >
       <div
         className="header__avatar-wrapper user__avatar-wrapper"
         style={avatarStyles || null}
       >
       </div>
-      <span className="header__login">{name}</span>
-    </a>
+      <span className="header__login">{email}</span>
+    </Link>
   );
 };
 
 SignInLink.propTypes = {
-  isAuthorizationRequired: PropTypes.bool,
   userData: PropTypes.any,
-  onClickHandler: PropTypes.func
 };
 
 const mapStateToProps = (state) => {
   return {
-    isAuthorizationRequired: getAuthorizationStatus(state),
     userData: getCurrentUserData(state)
   };
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  onClickHandler: (status) => {
-    dispatch(actionCreators.authorizationRequired(status));
-  }
-});
-
 export {SignInLink};
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignInLink);
+export default connect(mapStateToProps)(SignInLink);

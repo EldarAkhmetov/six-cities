@@ -5,6 +5,8 @@ import {connect} from 'react-redux';
 import {actionCreators} from '../../reducer/current-city/current-city';
 import {getLocations, getCurrentCity} from '../../reducer/offers/selectors';
 
+const MAX_LOCATIONS_TO_RENDER = 6;
+
 const LocationsList = (props) => {
   const {locations, currentCity, changeCurrentCity} = props;
 
@@ -12,7 +14,7 @@ const LocationsList = (props) => {
     <div className="cities tabs">
       <section className="locations container">
         <ul className="locations__list tabs__list">
-          {[...locations.keys()].map((it, index) => {
+          {[...locations.keys()].slice(0, MAX_LOCATIONS_TO_RENDER).map((it, index) => {
             return (
               <li className="locations__item" key={`location-${index}`}>
                 <a
